@@ -4,7 +4,7 @@
 Este modulo para workspace de jasper Studoio contiene fuentes jrxml de reporte para el submodulo de sga y personal
 
 ## Rotulos
-En el proyecto SGA (HGS) es muy importante el rotulado de sustancias, lo que permite estar dentro de normas internacionalmente 
+En el proyecto SGA (**GHS Globally Harmonized System**) es muy importante el rotulado de sustancias, lo que permite estar dentro de normas internacionalmente 
 aceptadas. Esto no solamente implica generar los rotulos adecuados, sino tambien las fichas de seguridad, como así tambien las 
 nomenclaturas y reglamentaciones en lo concerniente al almacenamiento y transporte de las sustancias como los resultantes 
 descartables de la utilizacion de las sustancias.
