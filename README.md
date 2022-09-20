@@ -1,6 +1,8 @@
 # sga01
 **reportes en jaspersoft**
 
+# **SGA Sistema Globalmente Armonizado**
+---
 Este modulo para workspace de jasper Studoio contiene fuentes jrxml de reporte para el submodulo de sga y personal
 
 ## Rotulos
