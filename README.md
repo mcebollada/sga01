@@ -4,6 +4,15 @@
 Este modulo para workspace de jasper Studoio contiene fuentes jrxml de reporte para el submodulo de sga y personal
 
 ## Rotulos
+En el proyecto SGA (HGS) es muy importante el rotulado de sustancias, lo que permite estar dentro de normas internacionalmente 
+aceptadas. Esto no solamente implica generar los rotulos adecuados, sino tambien las fichas de seguridad, como así tambien las 
+nomenclaturas y reglamentaciones en lo concerniente al almacenamiento y transporte de las sustancias como los resultantes 
+descartables de la utilizacion de las sustancias.
+
+Otro problema es lo relativo a las sustancias y/o residuos  que estan controlados por diversas organizaciones como la SRT y RENPRE,
+de las cuales se debe tener trazabilidad del consumo desde su compra hasta su total utilización. En el caso de las sustancias 
+controladas por la SRT tambien quedan involucrados todas aquellas personas que participaron en su manipulación en forma directa 
+e indirecta. De igual manera las sustancias controladas por RENPRE, que además tiene serias implicaciones legales.
 
 > Rotulos de Sustancias
 >> ![image](https://user-images.githubusercontent.com/5493036/191299682-bff77bd5-017b-4321-8b65-af0ad8f8dee1.png)
@@ -15,6 +24,10 @@ Este modulo para workspace de jasper Studoio contiene fuentes jrxml de reporte p
 >> sin fondo
 >>> ![image](https://user-images.githubusercontent.com/5493036/191298855-6dbdda0e-f3dc-4a2f-ba75-8cb57caed876.png)
 
->>> preimpreso
->> ![image](https://user-images.githubusercontent.com/5493036/191299212-92efad98-4fbc-4e88-a3ea-57ad8834e55e.png)
+>> preimpreso
+>>> ![image](https://user-images.githubusercontent.com/5493036/191299212-92efad98-4fbc-4e88-a3ea-57ad8834e55e.png)
 
+
+## Catalogo de sustancia
+Es un rotulo ampliado donde se incluye información adicional con respecto a almacenamiento y transporte.
+>![image](https://user-images.githubusercontent.com/5493036/191306492-b07a2703-ba47-49f6-a49d-263d32a3ed7a.png)
