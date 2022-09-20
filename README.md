@@ -1,20 +1,21 @@
 # sga01
 **reportes en jaspersoft**
+Este modulo para workspace de Jasper Studio contiene fuentes jrxml de reporte para el submodulo de sga y personal
 
 # **SGA Sistema Globalmente Armonizado**
 ---
-Este modulo para workspace de jasper Studoio contiene fuentes jrxml de reporte para el submodulo de sga y personal
 
 ## Rotulos
 En el proyecto SGA (**GHS Globally Harmonized System**) es muy importante el rotulado de sustancias, lo que permite estar dentro de normas internacionalmente 
 aceptadas. Esto no solamente implica generar los rotulos adecuados, sino tambien las fichas de seguridad, como así tambien las 
-nomenclaturas y reglamentaciones en lo concerniente al almacenamiento y transporte de las sustancias como los resultantes 
+nomenclaturas y reglamentaciones en lo concerniente al almacenamiento y transporte de las sustancias y de los resultantes 
 descartables de la utilizacion de las sustancias.
 
-Otro problema es lo relativo a las sustancias y/o residuos  que estan controlados por diversas organizaciones como la SRT y RENPRE,
+Otro problema es lo relativo a las sustancias y/o residuos  que estan controlados por diversas organizaciones como la 
+SRT y ReNPre,
 de las cuales se debe tener trazabilidad del consumo desde su compra hasta su total utilización. En el caso de las sustancias 
 controladas por la SRT tambien quedan involucrados todas aquellas personas que participaron en su manipulación en forma directa 
-e indirecta. De igual manera las sustancias controladas por RENPRE, que además tiene serias implicaciones legales.
+e indirecta. De igual manera las sustancias controladas por ReNPre, que además tiene serias implicaciones legales.
 
 > Rotulos de Sustancias
 >> ![image](https://user-images.githubusercontent.com/5493036/191299682-bff77bd5-017b-4321-8b65-af0ad8f8dee1.png)
