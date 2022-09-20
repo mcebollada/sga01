@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0  -->
+<!-- 2022-03-17T10:09:46 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pictograma" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cf9eb4fd-dae9-443b-ad5f-8818633b59c9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.unit." value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="mm"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT unc.sga_pictograma.grafico,
+	unc.sga_pictograma.ghscodigp,
+	unc.sga_pictograma.imagen,
+	unc.sga_pictograma.id_pictograma
+FROM unc.sga_pictograma]]>
+	</queryString>
+	<field name="grafico" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="grafico"/>
+		<property name="com.jaspersoft.studio.field.label" value="grafico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_pictograma"/>
+	</field>
+	<field name="ghscodigp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ghscodigp"/>
+		<property name="com.jaspersoft.studio.field.label" value="ghscodigp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_pictograma"/>
+	</field>
+	<field name="imagen" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="imagen"/>
+		<property name="com.jaspersoft.studio.field.label" value="imagen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_pictograma"/>
+	</field>
+	<field name="id_pictograma" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_pictograma"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_pictograma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_pictograma"/>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="497" y="0" width="61" height="785" forecolor="#FFFFFF" backcolor="#D6D4D4" uuid="8f0e9ae7-4745-4337-9538-ab83a13932d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Right" markup="none">
+					<font size="50" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNC - CPS]]></text>
+			</staticText>
+		</band>
+	</background>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="15" y="-1" width="475" height="36" forecolor="#FFFCFC" backcolor="#9C605F" uuid="2a6d1925-2880-4838-9ab1-c1d44af50bfd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f291e2cc-e8af-45cd-b011-a5e8c3262e6a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pictogramas y otros Gráficos]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="81" splitType="Stretch">
+			<rectangle radius="13">
+				<reportElement x="15" y="0" width="475" height="81" uuid="5637a789-d0e7-489c-86ec-a1d4f2d485f1"/>
+			</rectangle>
+			<textField>
+				<reportElement x="25" y="4" width="80" height="31" uuid="2adf83e9-e27d-462a-93af-8021af8d928e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f291e2cc-e8af-45cd-b011-a5e8c3262e6a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_pictograma}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="4" width="290" height="70" uuid="833727aa-7e8f-455b-bbe9-d0bc789b0cb4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8cb0e178-5b6d-4181-be2b-b8e5fa1b38c6"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grafico}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle" isUsingCache="true">
+				<reportElement x="411" y="4" width="70" height="70" uuid="57e6ff0a-c452-4202-8e89-c8b5b4c6ddc4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{imagen}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="25" y="42" width="80" height="32" uuid="93c9f685-10c6-4294-a5c6-7c0d6d1182c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ghscodigp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

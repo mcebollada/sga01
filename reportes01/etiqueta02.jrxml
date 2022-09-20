@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0  -->
+<!-- 2022-06-23T18:15:00 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etiqueta01" columnCount="4" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="140" columnSpacing="11" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f09d7ed0-c508-4f0d-ad80-d2a29f8597a9">
+	<property name="com.jaspersoft.studio.unit." value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="mm"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select id_uec_pos, id_uec
+from sga_uec_posicion p0
+where not exists(select * 
+				from sga_uec_posicion p1 
+                where p0.id_uec_pos=p1.id_uec_pos_sup)]]>
+	</queryString>
+	<field name="id_uec_pos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_uec_pos"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_uec_pos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_uec_posicion"/>
+	</field>
+	<field name="id_uec" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_uec"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_uec"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_uec_posicion"/>
+	</field>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<textField textAdjust="ScaleFont">
+				<reportElement x="3" y="0" width="84" height="28" uuid="8825b32c-f7b2-4b7d-ad79-c831a1be2d4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_uec}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="2" y="28" width="83" height="32" uuid="f3d2360e-57e0-4fbe-a1aa-f5330b2dbffc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_uec_pos}.length()>$F{id_uec}.length()+1?$F{id_uec_pos}.split("@")[1]:$F{id_uec}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="87" y="5" width="52" height="52" uuid="dbefdbc9-a4f8-42b4-9728-83f4cc0d351b"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{id_uec_pos}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

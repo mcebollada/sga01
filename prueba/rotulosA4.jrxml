@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- 2022-09-13T18:25:57 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotulosA4" columnCount="3" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="191" columnSpacing="10" leftMargin="1" rightMargin="1" topMargin="1" bottomMargin="1" uuid="505f8c2f-579a-4974-9a8c-7c73d88d141c">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="filas" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT idsu,
+	idde,
+	nombre,
+	casnr,
+	uo,
+	date_format( now( ),'%Y/%m/%d') AS fecha,
+	i_o
+FROM v_persona_transacciondetalle
+WHERE 
+	 i_o = 'e']]>
+	</queryString>
+	<field name="idsu" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idsu"/>
+		<property name="com.jaspersoft.studio.field.label" value="idsu"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<field name="idde" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idde"/>
+		<property name="com.jaspersoft.studio.field.label" value="idde"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<field name="casnr" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="casnr"/>
+		<property name="com.jaspersoft.studio.field.label" value="casnr"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<field name="uo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="uo"/>
+		<property name="com.jaspersoft.studio.field.label" value="uo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<field name="fecha" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+	</field>
+	<field name="i_o" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="i_o"/>
+		<property name="com.jaspersoft.studio.field.label" value="i_o"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="v_persona_transacciondetalle"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{filas}.equals( 7 )]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement x="4" y="1" width="183" height="118" uuid="4a6d102b-5f41-4135-b778-bee4a1ad7702">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="2" width="180" height="30" uuid="3c8ab1f7-056b-4689-aef1-5af2ed48483d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="45" width="180" height="22" uuid="7c865bc2-9d1d-4f94-b3d3-09dfc6c01aef">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casnr}.strip()+" - "+$F{uo}.strip()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="5" y="90" width="180" height="28" uuid="f7589f8a-eb47-42d8-ac47-83023e1e1634">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idde}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="5" y="79" width="180" height="10" uuid="1baca842-260a-421e-993d-62e899143d31">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idde}+" - "+$F{fecha}+" - "+$F{idsu}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="105">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{filas}.equals( 8 )]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement x="4" y="1" width="183" height="103" uuid="393bbf43-c694-4acc-9d1b-01073ff673be">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement x="5" y="75" width="180" height="28" uuid="8e6b5f0b-f0fa-4e5c-943c-c3deaa97e1d6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idde}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="5" y="64" width="180" height="10" uuid="1aba7698-d3aa-48a1-8b26-c3170e4a989f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idde}+" - "+$F{fecha}+" - "+$F{idsu}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="2" width="180" height="30" uuid="9c347fff-f6be-4f4f-826f-e1559072562a">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="37" width="180" height="22" uuid="fa0884e3-c304-436f-a1f1-ca696b4bc351">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casnr}.strip()+" - "+$F{uo}.strip()]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="93">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{filas}.equals( 9 )]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement x="4" y="1" width="183" height="91" uuid="a28afd76-212a-4061-bd99-471110a60898">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="2" width="180" height="30" uuid="8020270e-400c-43ff-8009-d809d0717a95">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="32" width="180" height="22" uuid="c5c8a949-a6bf-43c7-9cc1-ccd05cd8f82f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casnr}.strip()+" - "+$F{uo}.strip()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="54" width="180" height="10" uuid="e7cdd15f-b86d-4835-8f8e-b4fe5833b631">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idde}+" - "+$F{fecha}+" - "+$F{idsu}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="5" y="65" width="180" height="25" uuid="45165ae9-eb8b-49b9-bab5-f51cf90a4dd1">
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idde}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+		<band height="84">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{filas}.equals( 10 )]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement x="4" y="1" width="183" height="82" uuid="16171cfe-7ecc-401a-b1db-3aa5fb498ecb">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="2" width="180" height="26" uuid="0d9f2c48-9cd5-4f7a-827f-c2a7b0b0157d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="30" width="180" height="14" uuid="f9036fac-3f4b-48f6-967c-08aca453fcb8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casnr}.strip()+" - "+$F{uo}.strip()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="47" width="180" height="8" uuid="697079c7-8f81-4ce5-a419-c5d8d8707346">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idde}+" - "+$F{fecha}+" - "+$F{idsu}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="5" y="56" width="180" height="25" uuid="fcae78d0-a509-4534-a6cb-daddbbc63cd0">
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idde}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+		<band height="76">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{filas}.equals( 11 )]]></printWhenExpression>
+			<rectangle radius="3">
+				<reportElement x="4" y="1" width="183" height="74" uuid="409876de-7be2-4277-ae9c-8a048a6f86d3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="2" width="180" height="26" uuid="f242c5f2-24ea-41fc-b809-5677bb576b27">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight">
+				<reportElement x="5" y="28" width="180" height="14" uuid="a9f4db17-0132-413f-98ce-d015c721258c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{casnr}.strip()+" - "+$F{uo}.strip()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="42" width="180" height="8" uuid="ffe1de44-8926-45f5-afc0-19e56f7957ca">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idde}+" - "+$F{fecha}+" - "+$F{idsu}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="5" y="50" width="180" height="25" uuid="27ff5a7f-6af4-4ff5-9df1-e8e51077f325">
+					<property name="com.jaspersoft.studio.unit.barWidth" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128C" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{idde}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

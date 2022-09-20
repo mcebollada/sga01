@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0  -->
+<!-- 2022-06-21T13:51:23 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="carnet01" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="243" columnSpacing="36" leftMargin="36" rightMargin="36" topMargin="6" bottomMargin="6" uuid="433a6d5f-0930-4871-8ec8-c69d96908574">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[dW5jLnNnYV9wZXJzb25hX2FsaWEgQVMgLDI0LDkxLDU5OTBiMWM1LTY3YTMtNDcwMS1iNDc0LTRm
+OGNhMWUyY2ZlZDs=]]>
+	</property>
+	<queryString>
+		<![CDATA[SELECT id_alias,
+	uuidn,
+	foto
+FROM sga_persona_alia]]>
+	</queryString>
+	<field name="id_alias" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_alias"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_alias"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_persona_alia"/>
+	</field>
+	<field name="uuidn" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="uuidn"/>
+		<property name="com.jaspersoft.studio.field.label" value="uuidn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_persona_alia"/>
+	</field>
+	<field name="foto" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="foto"/>
+		<property name="com.jaspersoft.studio.field.label" value="foto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_persona_alia"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="168" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="255" height="155" uuid="05b4f0d3-dfb4-4e0b-ade3-dbfe4df48a3b"/>
+			</rectangle>
+			<componentElement>
+				<reportElement x="5" y="38" width="120" height="118" uuid="5a1c3785-3999-418f-abd4-5eb5d9f2d118"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{id_alias}+"@"+$F{uuidn}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<textField>
+				<reportElement x="5" y="5" width="244" height="30" uuid="e47aef26-fed5-4735-99bd-81f1a1ab99cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_alias}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="132" y="38" width="115" height="119" uuid="98b60043-8d59-48a9-be39-13be06bc72aa"/>
+				<imageExpression><![CDATA[$F{foto}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

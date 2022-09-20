@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<!-- 2022-09-15T20:40:31 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="claCatConPru" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="cc75501f-39e9-4839-bc4e-fc69866cb9d7">
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="true"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="167"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="827"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString>
+		<![CDATA[SELECT con_pru.id_cpru,
+	con_pru.desc_tipo_consejo_prudencia,
+	con_pru.id_consejo_prudencia,
+	cpru_cp.id_cat_pel,
+	cpru_cp.cond_uso,
+	cc.desc_cat_pel,
+	cc.id_clase_pel,
+	cc.palabra_adv,
+	sga_clase_pel.desc_clase_pel,
+	sga_clase_pel.id_tcp,
+	sga_cip_cp.id_cod_ind_pel,
+	(select imagenp from sga_pictograma where id_pictograma=cc.id_pictograma) as pict1,
+	(select imagenp from sga_pictograma where id_pictograma=cc.id_pictograma2) as pict2
+	 ,(select imagenp from sga_pictograma where id_pictograma= 11) as LogoIzq
+    ,(select imagenp from sga_pictograma where id_pictograma= 12) as LogoDer
+	
+FROM sga_cpru_cp cpru_cp
+	INNER JOIN sga_consejo_prudencia con_pru ON 
+	 cpru_cp.id_consejo_prudencia = con_pru.id_consejo_prudencia 
+	right JOIN sga_cat_pel cc ON 
+	 cpru_cp.id_cat_pel = cc.id_cat_pel 
+	INNER jOIN sga_cip_cp ON 
+	 cc.id_cat_pel = sga_cip_cp.id_cat_pel 
+	INNER JOIN sga_clase_pel ON 
+	 cc.id_clase_pel = sga_clase_pel.id_clase_pel
+ORDER BY cc.id_clase_pel ASC,
+	cc.desc_cat_pel ASC,
+	cpru_cp.id_consejo_prudencia ASC]]>
+	</queryString>
+	<field name="id_cpru" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_cpru"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_cpru"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_consejo_prudencia"/>
+	</field>
+	<field name="desc_tipo_consejo_prudencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="desc_tipo_consejo_prudencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="desc_tipo_consejo_prudencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_consejo_prudencia"/>
+	</field>
+	<field name="id_consejo_prudencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_consejo_prudencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_consejo_prudencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_consejo_prudencia"/>
+	</field>
+	<field name="id_cat_pel" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_cat_pel"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_cat_pel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cpru_cp"/>
+	</field>
+	<field name="cond_uso" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cond_uso"/>
+		<property name="com.jaspersoft.studio.field.label" value="cond_uso"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cpru_cp"/>
+	</field>
+	<field name="desc_cat_pel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="desc_cat_pel"/>
+		<property name="com.jaspersoft.studio.field.label" value="desc_cat_pel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cat_pel"/>
+	</field>
+	<field name="id_clase_pel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_clase_pel"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_clase_pel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cat_pel"/>
+	</field>
+	<field name="palabra_adv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="palabra_adv"/>
+		<property name="com.jaspersoft.studio.field.label" value="palabra_adv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cat_pel"/>
+	</field>
+	<field name="desc_clase_pel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="desc_clase_pel"/>
+		<property name="com.jaspersoft.studio.field.label" value="desc_clase_pel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_clase_pel"/>
+	</field>
+	<field name="id_tcp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_tcp"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_tcp"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_clase_pel"/>
+	</field>
+	<field name="id_cod_ind_pel" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_cod_ind_pel"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_cod_ind_pel"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sga_cip_cp"/>
+	</field>
+	<field name="pict1" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="pict1"/>
+		<property name="com.jaspersoft.studio.field.label" value="pict1"/>
+	</field>
+	<field name="pict2" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="pict2"/>
+		<property name="com.jaspersoft.studio.field.label" value="pict2"/>
+	</field>
+	<field name="LogoIzq" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="LogoIzq"/>
+		<property name="com.jaspersoft.studio.field.label" value="LogoIzq"/>
+	</field>
+	<field name="LogoDer" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="LogoDer"/>
+		<property name="com.jaspersoft.studio.field.label" value="LogoDer"/>
+	</field>
+	<group name="id_clase_pel" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{id_clase_pel}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField textAdjust="StretchHeight">
+					<reportElement x="0" y="0" width="70" height="20" uuid="c9075316-eae1-4878-8a9a-4bc4f10cefe2"/>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_clase_pel}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="80" y="0" width="360" height="20" uuid="86eba393-d441-450e-b1f4-257b02524b62">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa87239a-6d4b-43df-90fd-02fe6a25278c"/>
+					</reportElement>
+					<textElement textAlignment="Justified" verticalAlignment="Middle">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{desc_clase_pel}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="desc_cat_pel" isReprintHeaderOnEachPage="true" preventOrphanFooter="true">
+		<groupExpression><![CDATA[$F{desc_cat_pel}]]></groupExpression>
+		<groupHeader>
+			<band height="51">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<textField>
+					<reportElement x="80" y="0" width="176" height="20" uuid="a6eb2ba7-b826-4cc2-88b8-0cc8632699f2"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{desc_cat_pel}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="49" y="0" width="31" height="20" uuid="5e48dc2b-c525-4b65-9b66-2a49edc7a3fd"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_cat_pel}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="256" y="0" width="94" height="20" uuid="eef60da0-d4dc-49f8-8284-e8c89799141a">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="49c5e1b5-1bf9-47e6-95e6-63cd36ddaf6c"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{palabra_adv}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="360" y="0" width="80" height="20" uuid="a0d20b95-d4b3-4977-b53d-dae658797c4d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_cod_ind_pel}]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="440" y="0" width="50" height="50" uuid="9672c052-4cc9-4567-8895-05202cd684c3"/>
+					<imageExpression><![CDATA[$F{pict1}]]></imageExpression>
+				</image>
+				<image hAlign="Center" vAlign="Middle" isUsingCache="true">
+					<reportElement x="497" y="0" width="50" height="50" uuid="b85f3637-c50f-427d-ae9e-275189ad0f7c"/>
+					<imageExpression><![CDATA[$F{pict2}]]></imageExpression>
+				</image>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="3">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<line>
+					<reportElement x="0" y="0" width="551" height="1" uuid="aecff895-6f24-4b1f-965a-aab0cf6038ec">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="93" y="85" width="372" height="625" forecolor="#E8DADA" uuid="6ee5cdf3-ebec-4b4d-8b2f-f1be2855bd70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font size="175" isBold="true"/>
+				</textElement>
+				<text><![CDATA[U.N.C.]]></text>
+			</staticText>
+		</band>
+	</background>
+	<title>
+		<band height="429" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="76" height="38" uuid="df65012b-29c4-4b6d-b182-07c980957a52">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{LogoIzq}]]></imageExpression>
+			</image>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="80" y="100" width="400" height="180" uuid="1b0c79d7-8e14-4582-8718-73f03021a063"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="48" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consejos de Prudencia"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="480" y="0" width="76" height="38" uuid="de45a6ed-e43a-407b-b346-6ba343ca67f3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{LogoDer}]]></imageExpression>
+			</image>
+			<textField pattern="d MMM yyyy">
+				<reportElement x="180" y="369" width="200" height="50" uuid="b55a9a48-0a67-4857-88ec-ab69cb7dccf3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="55" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="76" height="38" uuid="d227eb46-035a-4220-9d52-234027ccb830">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{LogoIzq}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="80" y="0" width="400" height="38" uuid="8028ef41-c70e-437f-8aa3-4d396193b782"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="30" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Consejos de Prudencia"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="480" y="0" width="76" height="38" uuid="089df189-71e8-4c17-bf1e-e7c10b1d5f35">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$F{LogoDer}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="38" width="188" height="12" uuid="09e7cbed-98c3-45cb-a662-a9401547db1e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidad Nacional de Cordoba]]></text>
+			</staticText>
+			<textField pattern="d MMM yyyy">
+				<reportElement x="490" y="38" width="64" height="12" uuid="6f8235b6-8e5b-4d87-8fca-3c31aa1973c5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="196" y="37" width="284" height="12" uuid="abc34a78-9f74-4c09-bc2c-c6c7631c3d56">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}.get("uec" )]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement mode="Opaque" x="0" y="-1" width="555" height="20" uuid="f8c7ac66-0ba1-4ca7-9d2a-b66abd9f7f64">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="40" y="1" width="270" height="16" uuid="7d61c13d-8818-46ea-bd41-c46f30652db1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec36aa6b-2acf-4c33-b3c6-4a91525cdef2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consejo Prudencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="1" width="26" height="16" uuid="185ec8bd-5231-4589-a959-0a9b49df209f">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4456c8a5-45ee-49f9-8c7f-68e3e8cbf67f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="1" width="227" height="16" uuid="9f4c5408-d68f-4bc5-9861-d5b32004e0b0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4c57357-6b62-493a-b8d9-226af04124d1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Condición de Uso]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="40" y="2" width="270" height="12" uuid="96ea39a8-c662-48cd-a316-0ae7231f9a79">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ec36aa6b-2acf-4c33-b3c6-4a91525cdef2"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{desc_tipo_consejo_prudencia}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="4" y="2" width="36" height="12" uuid="8e283362-891a-4f97-b67f-4a3c0ca7c118">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4456c8a5-45ee-49f9-8c7f-68e3e8cbf67f"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_consejo_prudencia}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="325" y="2" width="227" height="12" uuid="d7544c0e-a68f-4721-aedd-238233c8f5ab">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4c57357-6b62-493a-b8d9-226af04124d1"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cond_uso}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle radius="5">
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="12" uuid="315d38aa-22b7-4bb6-96a3-5cc0da538ab7">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="406" y="0" width="100" height="12" uuid="7f1f8311-90ea-4eb6-b083-940a97a250d6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="505" y="0" width="50" height="12" uuid="677fbd8a-127a-4e5f-90db-f2590af0a3e6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="0" width="170" height="12" uuid="dde3d3cd-6004-4d4f-9416-310011b43bf1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{JASPER_REPORT}.getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="180" y="0" width="200" height="12" uuid="0623c84a-13a5-432c-9aea-f806994c4a6e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}.get("usuario")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="118" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="178" y="13" width="212" height="87" uuid="6b490cc6-ffe9-48f6-92c5-c6817b61ddf7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="191" y="21" width="110" height="18" uuid="5cac473f-4216-4b6f-8a78-9156c321732d">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Código del Reporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="39" width="110" height="18" uuid="d29a626d-4ca4-4a96-8efa-bed386223041">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="57" width="110" height="18" uuid="3e49c596-216e-4dba-a627-541302127dea">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Registros del Reporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="75" width="110" height="18" uuid="9c21b2b7-8fec-4dda-9e79-3b6c46fe3ab9">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<text><![CDATA[Páginas del Reporte]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="311" y="74" width="69" height="18" uuid="8a80a743-be73-4160-a60d-27bde9bbdd8e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="56" width="69" height="18" uuid="a58b7dff-61ba-4aed-baac-56f5546caf51"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="38" width="69" height="18" uuid="52296e21-94c3-435b-a9a0-63751321b90f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}.get("usuario")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="20" width="69" height="18" uuid="6b51fc1d-f6c3-4338-ba6d-2b1772cca41d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{JASPER_REPORT}.getName()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

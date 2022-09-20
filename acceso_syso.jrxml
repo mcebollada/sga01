@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0  -->
+<!-- 2022-06-21T17:42:26 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="acceso_syso" columnCount="2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="376" columnSpacing="29" leftMargin="30" rightMargin="30" topMargin="30" bottomMargin="30" uuid="bccac708-d3c9-45cb-9180-a991fc5a5a1a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString>
+		<![CDATA[select nombre, texto from 
+		(select 'syso_demo.png' as nombre, 'SySO demo' as texto
+			union
+			select 'syso_pro.png' as nombre, 'SySO pro' as texto
+		) as t]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+	</field>
+	<field name="texto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="texto"/>
+		<property name="com.jaspersoft.studio.field.label" value="texto"/>
+	</field>
+	<detail>
+		<band height="535" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="70" width="390" height="64" uuid="d53cadd0-b09f-4ab1-8e09-291374c2082f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="42" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{texto}]]></textFieldExpression>
+			</textField>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="187" width="395" height="281" uuid="aa6d20d3-d0d6-4bc4-9e24-a30589c94e67"/>
+				<imageExpression><![CDATA[$F{nombre}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
