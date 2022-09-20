@@ -33,4 +33,6 @@ e indirecta. De igual manera las sustancias controladas por ReNPre, que además 
 
 ## Catalogo de sustancia
 Es un rotulo ampliado donde se incluye información adicional con respecto a almacenamiento y transporte.
->![image](https://user-images.githubusercontent.com/5493036/191306492-b07a2703-ba47-49f6-a49d-263d32a3ed7a.png)
+> <img src="https://user-images.githubusercontent.com/5493036/191310168-bc2c989a-8f12-4b19-967a-39fbb801ba11.png" width="200" height="100">
+>![image](https://user-images.githubusercontent.com/5493036/191310168-bc2c989a-8f12-4b19-967a-39fbb801ba11.png)
+
