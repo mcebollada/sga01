@@ -1,6 +1,6 @@
 # sga01
 **reportes en jaspersoft**
-Este modulo para workspace de Jasper Studio contiene fuentes jrxml de reporte para el submodulo de sga y personal
+Este modulo para workspace de Jasper Studio contiene fuentes jrxml de reporte para el submodulo de sga y personal 
 
 # **SGA Sistema Globalmente Armonizado**
 ---
@@ -10,7 +10,7 @@ En el proyecto SGA (**GHS Globally Harmonized System**) es muy importante el rot
 aceptadas. Esto no solamente implica generar los rotulos adecuados, sino tambien las fichas de seguridad, como así tambien las 
 nomenclaturas y reglamentaciones en lo concerniente al almacenamiento y transporte de las sustancias y de los resultantes 
 descartables de la utilizacion de las sustancias.
-
+$$m_7$$
 Otro problema es lo relativo a las sustancias y/o residuos  que estan controlados por diversas organizaciones como la 
 SRT y ReNPre,
 de las cuales se debe tener trazabilidad del consumo desde su compra hasta su total utilización. En el caso de las sustancias 
