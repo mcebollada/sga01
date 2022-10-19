@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
-<!-- 2022-09-20T10:12:25 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotuloNPFA" pageWidth="595" pageHeight="420" orientation="Landscape" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5704c3b-56fd-4061-9c6c-1a3f759642cb">
+<!-- 2022-09-28T10:57:36 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotuloNPFA" pageWidth="595" pageHeight="420" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5704c3b-56fd-4061-9c6c-1a3f759642cb">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
@@ -14,8 +14,11 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="750"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
 	<parameter name="paramId_transaccion_detalle" class="java.lang.String"/>
-	<parameter name="paramMask" class="java.lang.Boolean">
-		<defaultValueExpression><![CDATA[TRUE( )]]></defaultValueExpression>
+	<parameter name="Param" class="java.lang.String" isForPrompting="false" evaluationTime="Late">
+		<defaultValueExpression><![CDATA[$P{paramId_transaccion_detalle}==null?"'-1'":"'-1,"+$P{paramId_transaccion_detalle}+",999999999999'";]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramMask" class="java.lang.String">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT vt.desc_sus,
@@ -53,9 +56,9 @@ FROM v_transaccion1 vt
 	left join sga_sustancia_cat_pel cp ON  vt.id_sustancia= cp.id_sustancia
 	join sga_sustancia_residuo sr ON 	 vt.id_sustancia= sr.id_sustancia
 	left join sga_sustancia_pert_familia pf ON  vt.id_sustancia= pf.id_sustancia
-	join sga_sustancia_familia sf ON  pf.id_sustancia_familia= sf.id_sustancia_familia
+	left join sga_sustancia_familia sf ON  pf.id_sustancia_familia= sf.id_sustancia_familia
 WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
-	and find_in_set(vt.id_transaccion_detalle, $P{paramId_transaccion_detalle})]]>
+	and find_in_set(vt.id_transaccion_detalle, $P{Param})]]>
 	</queryString>
 	<field name="desc_sus" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="desc_sus"/>
@@ -219,6 +222,12 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 		<property name="com.jaspersoft.studio.field.name" value="npfa720"/>
 		<property name="com.jaspersoft.studio.field.label" value="npfa720"/>
 	</field>
+	<variable name="Vmask" class="java.lang.Boolean" resetType="None">
+		<variableExpression><![CDATA[$P{paramMask}==null?Boolean.FALSE :$P{paramMask}.equalsIgnoreCase( "1" )?Boolean.TRUE:Boolean.FALSE]]></variableExpression>
+	</variable>
+	<variable name="VParam" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA["'-1,"+$P{paramId_transaccion_detalle}+",9999999999'"]]></variableExpression>
+	</variable>
 	<background>
 		<band height="380" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -226,7 +235,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 				<reportElement mode="Opaque" x="1" y="35" width="14" height="298" uuid="02a19bf5-7a64-49b0-b598-6df84c21c9e2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" rotation="Left">
 					<font size="11"/>
@@ -251,7 +260,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 				<reportElement mode="Transparent" x="540" y="35" width="14" height="298" uuid="d1f13a8f-b47e-4792-aa4a-fc6e722853ec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" rotation="Right">
 					<font size="11"/>
@@ -264,25 +273,25 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{npfa720}]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="0" y="0" width="113" height="53" uuid="fbc58f6f-c131-4981-931d-1b1b567abb17">
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{LogoIzq}]]></imageExpression>
 			</image>
 			<image>
 				<reportElement x="441" y="0" width="113" height="53" uuid="e1bf2f2f-32d4-48e5-9e67-e1c5e9c8c999">
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{LogoDer}]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="124" y="0" width="235" height="53" uuid="13b4bfb3-37d3-4ab5-bcad-31e6470776fe">
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="22" isBold="true"/>
@@ -291,7 +300,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="113" y="305" width="247" height="20" forecolor="#FFFCFC" backcolor="#7A7878" uuid="f690f22a-5738-4c23-8151-732be6d725da">
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12" isBold="true"/>
@@ -304,7 +313,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle>
@@ -313,7 +322,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 			<rectangle>
@@ -322,7 +331,7 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<printWhenExpression><![CDATA[$P{paramMask}]]></printWhenExpression>
+					<printWhenExpression><![CDATA[$V{Vmask}]]></printWhenExpression>
 				</reportElement>
 			</rectangle>
 		</band>
@@ -793,4 +802,16 @@ WHERE 	 vt.i_o= 'e'   AND vt.tipo_sus= 2
 			</image>
 		</band>
 	</detail>
+	<noData>
+		<band height="150">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="45" y="56" width="475" height="84" uuid="157e6da8-39bc-4bb1-aa44-5b73fa935d2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Hay Registros o filtro invalido]]></text>
+			</staticText>
+		</band>
+	</noData>
 </jasperReport>

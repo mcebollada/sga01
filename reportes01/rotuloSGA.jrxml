@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
-<!-- 2022-09-19T20:18:00 -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotuloSGA" printOrder="Horizontal" pageWidth="420" pageHeight="298" orientation="Landscape" columnWidth="276" columnSpacing="20" leftMargin="11" rightMargin="11" topMargin="11" bottomMargin="11" uuid="2a749e02-497f-458f-b6be-b43a023fc970">
+<!-- 2022-09-28T10:42:33 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rotuloSGA" printOrder="Horizontal" pageWidth="420" pageHeight="298" orientation="Landscape" whenNoDataType="NoDataSection" columnWidth="276" columnSpacing="20" leftMargin="11" rightMargin="11" topMargin="11" bottomMargin="11" uuid="2a749e02-497f-458f-b6be-b43a023fc970">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="651"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="340"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<parameter name="paramId_transaccion_detalle" class="java.lang.String"/>
+	<parameter name="Param" class="java.lang.String" isForPrompting="false" evaluationTime="Late">
+		<defaultValueExpression><![CDATA["'-1,"+$P{paramId_transaccion_detalle}+",9999999999'"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT distinct vt.desc_sus, vt.concentracion, vt.unidad, vt.pureza,	
 	vt.qr,	vt.uo,	vt.id_transaccion_detalle,	vt.casnr, vt.i_o
  	,date_FORMAT( vt.fecha_transaccion, '%Y-%m-%d') AS  fecha_transaccion
  	,nvl(date_format(vt.fecha_vto,'%m-%y'), 'S/D') as fecha_vto
-    ,cp.id_sustancia, cp.concentracion_umbral, cip.id, cip.descr
+    ,cp.id_sustancia, cp.concentracion_umbral, 
+    nvl(cip.id,' ')as id, nvl(cip.descr,'no hay detalles') as descr
     ,cp.p_advertencia
      ,vt.neto
     ,(select imagenp from sga_pictograma where id_pictograma= cp.id_pict1) as pict1
@@ -24,13 +28,14 @@
     
 FROM v_transaccion1 vt
 	left join sga_sustancia_cat_pel cp on  vt.id_sustancia=cp.id_sustancia
-	join (	select ci.id_cod_ind_pel as id, ci.indicacion_peligro as descr 
+	left join (	select ci.id_cod_ind_pel as id, ci.indicacion_peligro as descr 
 					from sga_cod_ind_pel ci 
 			union
 			select cp.id_consejo_prudencia as id, cp.desc_tipo_consejo_prudencia as descr 
 					from sga_consejo_prudencia cp)
     as cip on FIND_IN_SET(cip.id, concat(cp.in_cat_pel,',',in_con_pru))	
-where vt.i_o='e'   AND  tipo_sus !=2 and find_in_set(vt.id_transaccion_detalle, $P{paramId_transaccion_detalle})]]>
+where vt.i_o='e'   AND  tipo_sus !=2 	
+and find_in_set(vt.id_transaccion_detalle, $P{Param})]]>
 	</queryString>
 	<field name="desc_sus" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="desc_sus"/>
@@ -307,10 +312,11 @@ where vt.i_o='e'   AND  tipo_sus !=2 and find_in_set(vt.id_transaccion_detalle, 
 		<band height="12" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
-				<reportElement stretchType="ElementGroupBottom" x="16" y="0" width="45" height="11" uuid="868f1f4b-b3fc-4438-b936-c45965ce9038">
+				<reportElement stretchType="ElementGroupBottom" x="16" y="0" width="45" height="11" isRemoveLineWhenBlank="true" uuid="868f1f4b-b3fc-4438-b936-c45965ce9038">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="03db65a4-58b2-4669-993f-63fc78d20ddc"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[!$F{id}.equalsIgnoreCase( "null" )]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font size="9" isBold="true"/>
@@ -318,11 +324,12 @@ where vt.i_o='e'   AND  tipo_sus !=2 and find_in_set(vt.id_transaccion_detalle, 
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight">
-				<reportElement x="61" y="0" width="304" height="11" uuid="40ed5006-5bf6-4ece-9bcd-4ef092239025">
+				<reportElement x="61" y="0" width="304" height="11" isRemoveLineWhenBlank="true" uuid="40ed5006-5bf6-4ece-9bcd-4ef092239025">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2df34394-54ea-4e69-b2d5-07b97931cb37"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[!$F{descr}.equalsIgnoreCase( "null" )]]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Bottom">
 					<font size="10"/>
@@ -411,4 +418,16 @@ where vt.i_o='e'   AND  tipo_sus !=2 and find_in_set(vt.id_transaccion_detalle, 
 			</componentElement>
 		</band>
 	</pageFooter>
+	<noData>
+		<band height="150">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="10" y="30" width="368" height="84" uuid="b7c6c037-8445-4c41-877d-8e61572a26a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Hay Registros o filtro invalido]]></text>
+			</staticText>
+		</band>
+	</noData>
 </jasperReport>
